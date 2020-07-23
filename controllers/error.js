@@ -1,5 +1,13 @@
 module.exports = (err, req, res, next) => {
-  err.status = err.status || 'error';
-  err.statusCode = err.statusCode || 500;
-  res.status(err.statusCode).json({ status: 'fail', message: err.message });
+  if (req.originalUrl.startsWith('/api')) {
+    return res.status(err.statusCode || 500).json({
+      status: err.status,
+      error: err,
+      message: err.message,
+    });
+  }
+  return res.status(err.statusCode || 500).render('error', {
+    title: 'Something went wrong!',
+    msg: err.message,
+  });
 };

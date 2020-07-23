@@ -37,7 +37,7 @@ router
   )
   .patch(candidate_controller.uploadfile, candidate_controller.updateUser)
   .delete(
-    auth_controller.restrictTo(['admin', 'candidate']),
+    auth_controller.restrictTo(['admin']),
     candidate_controller.deleteOne
   );
 router.route('/stats').get(candidate_controller.statsIndividual);

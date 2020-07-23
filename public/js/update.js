@@ -15,8 +15,7 @@ exports.update_person = async (data, id) => {
       }, 1500);
     }
   } catch (err) {
-    alert(err.response, 'error');
-    console.log(err);
+    alert(err.response.data.message, 'error');
   }
 };
 exports.register_person = async (
@@ -54,8 +53,7 @@ exports.register_person = async (
       }, 1500);
     }
   } catch (err) {
-    alert(err.response, 'error');
-    console.log(err);
+    alert(err.response.data.message, 'error');
   }
 };
 exports.start_delete = async (id) => {
@@ -71,7 +69,6 @@ exports.start_delete = async (id) => {
       }, 1500);
     }
   } catch (err) {
-    alert(err.response, 'error');
-    console.log(err);
+    alert(err.response.data.message, 'error');
   }
 };

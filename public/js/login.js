@@ -18,8 +18,7 @@ exports.start_login = async function (email, password) {
       }, 1500);
     }
   } catch (err) {
-    alert(err.response, 'error');
-    console.log(err);
+    alert(err.response.data.message, 'error');
   }
 };
 exports.start_logout = async () => {
@@ -35,9 +34,7 @@ exports.start_logout = async () => {
         window.location.assign('/EC/mainpage');
       }, 1000);
     }
-  } catch (err) {
-    console.log(err.response);
-  }
+  } catch (err) {}
 };
 exports.start_signup = async (
   name,
@@ -86,9 +83,7 @@ exports.start_signup = async (
       }, 2000);
     }
   } catch (err) {
-    alert(err.response, 'error');
-    console.log(err);
-    console.log(err.response);
+    alert(err.response.data.message, 'error');
   }
 };
 exports.start_forgetpassword = async (email) => {
@@ -107,7 +102,7 @@ exports.start_forgetpassword = async (email) => {
       }, 2500);
     }
   } catch (err) {
-    alert(err.response, 'error');
+    alert(err.response.data.message, 'error');
   }
 };
 exports.start_reset = async (password, confirmpassword, token) => {
@@ -127,6 +122,6 @@ exports.start_reset = async (password, confirmpassword, token) => {
       }, 2500);
     }
   } catch (err) {
-    alert(err.response, 'error');
+    alert(err.response.data.message, 'error');
   }
 };

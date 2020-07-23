@@ -16,23 +16,39 @@ router.get('/EC/Verify', viewcontroller.getVerification);
 router.get('/EC/resetpassword/:token', viewcontroller.resetPassword);
 router
   .route('/EC/person/:id')
-  .get(authcontroller.islogin, viewcontroller.person);
+  .get(
+    authcontroller.islogin,
+    authcontroller.isProtected,
+    viewcontroller.person
+  );
 router.get(
   '/EC/Myteam/:id',
   authcontroller.islogin,
+  authcontroller.isProtected,
+  authcontroller.restrictTo(['admin', 'candidate']),
   viewcontroller.getteam,
   viewcontroller.team
 );
 router.get(
   '/EC/nomination/:id',
   authcontroller.islogin,
+  authcontroller.isProtected,
+  authcontroller.restrictTo(['admin', 'candidate']),
   viewcontroller.nominationfilling
 );
 router.get(
   '/EC/post/:post',
   authcontroller.islogin,
+  authcontroller.isProtected,
+  authcontroller.restrictTo(['admin']),
   viewcontroller.specificpost,
   viewcontroller.post
 );
-router.get('/EC/posts', authcontroller.islogin, viewcontroller.posts);
+router.get(
+  '/EC/posts',
+  authcontroller.islogin,
+  authcontroller.isProtected,
+  authcontroller.restrictTo(['admin']),
+  viewcontroller.posts
+);
 module.exports = router;

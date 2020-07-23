@@ -14,7 +14,8 @@ mixin member(photo,name,email,id)
 block content
  if candidates_
   h1
-   u(style="color:white;")= candidates_[0].post
+   -if(candidates_[0])
+    u(style="color:white;")= candidates_[0].post
   table
    -for(let i=0;i<candidates_.length;i++)
     -if(i%4==0)

@@ -1,8 +1,13 @@
-class apierror extends Error {
-  constructor(message, status) {
-    super();
-    this.message = message;
-    this.status = status;
+class AppError extends Error {
+  constructor(message, statusCode) {
+    super(message);
+
+    this.statusCode = statusCode;
+    this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
+    this.isOperational = true;
+
+    Error.captureStackTrace(this, this.constructor);
   }
 }
-module.exports = apierror;
+
+module.exports = AppError;

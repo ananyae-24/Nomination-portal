@@ -8430,16 +8430,15 @@ exports.start_login = /*#__PURE__*/function () {
               }, 1500);
             }
 
-            _context.next = 11;
+            _context.next = 10;
             break;
 
           case 7:
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
-            (0, _alert.alert)(_context.t0.response, 'error');
-            console.log(_context.t0);
+            (0, _alert.alert)(_context.t0.response.data.message, 'error');
 
-          case 11:
+          case 10:
           case "end":
             return _context.stop();
         }
@@ -8475,15 +8474,14 @@ exports.start_logout = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorR
             }, 1000);
           }
 
-          _context2.next = 10;
+          _context2.next = 9;
           break;
 
         case 7:
           _context2.prev = 7;
           _context2.t0 = _context2["catch"](0);
-          console.log(_context2.t0.response);
 
-        case 10:
+        case 9:
         case "end":
           return _context2.stop();
       }
@@ -8552,17 +8550,15 @@ exports.start_signup = /*#__PURE__*/function () {
               }, 2000);
             }
 
-            _context3.next = 19;
+            _context3.next = 17;
             break;
 
           case 14:
             _context3.prev = 14;
             _context3.t0 = _context3["catch"](0);
-            (0, _alert.alert)(_context3.t0.response, 'error');
-            console.log(_context3.t0);
-            console.log(_context3.t0.response);
+            (0, _alert.alert)(_context3.t0.response.data.message, 'error');
 
-          case 19:
+          case 17:
           case "end":
             return _context3.stop();
         }
@@ -8608,7 +8604,7 @@ exports.start_forgetpassword = /*#__PURE__*/function () {
           case 7:
             _context4.prev = 7;
             _context4.t0 = _context4["catch"](0);
-            (0, _alert.alert)(_context4.t0.response, 'error');
+            (0, _alert.alert)(_context4.t0.response.data.message, 'error');
 
           case 10:
           case "end":
@@ -8657,7 +8653,7 @@ exports.start_reset = /*#__PURE__*/function () {
           case 7:
             _context5.prev = 7;
             _context5.t0 = _context5["catch"](0);
-            (0, _alert.alert)(_context5.t0.response, 'error');
+            (0, _alert.alert)(_context5.t0.response.data.message, 'error');
 
           case 10:
           case "end":
@@ -8709,16 +8705,15 @@ exports.update_person = /*#__PURE__*/function () {
               }, 1500);
             }
 
-            _context.next = 11;
+            _context.next = 10;
             break;
 
           case 7:
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
-            (0, _alert.alert)(_context.t0.response, 'error');
-            console.log(_context.t0);
+            (0, _alert.alert)(_context.t0.response.data.message, 'error');
 
-          case 11:
+          case 10:
           case "end":
             return _context.stop();
         }
@@ -8769,16 +8764,15 @@ exports.register_person = /*#__PURE__*/function () {
               }, 1500);
             }
 
-            _context2.next = 13;
+            _context2.next = 12;
             break;
 
           case 9:
             _context2.prev = 9;
             _context2.t0 = _context2["catch"](0);
-            (0, _alert.alert)(_context2.t0.response, 'error');
-            console.log(_context2.t0);
+            (0, _alert.alert)(_context2.t0.response.data.message, 'error');
 
-          case 13:
+          case 12:
           case "end":
             return _context2.stop();
         }
@@ -8815,16 +8809,15 @@ exports.start_delete = /*#__PURE__*/function () {
               }, 1500);
             }
 
-            _context3.next = 11;
+            _context3.next = 10;
             break;
 
           case 7:
             _context3.prev = 7;
             _context3.t0 = _context3["catch"](0);
-            (0, _alert.alert)(_context3.t0.response, 'error');
-            console.log(_context3.t0);
+            (0, _alert.alert)(_context3.t0.response.data.message, 'error');
 
-          case 11:
+          case 10:
           case "end":
             return _context3.stop();
         }
@@ -9186,9 +9179,13 @@ if (saveprofessionaldetails) {
 if (deleteuser) {
   deleteuser.forEach(function (item) {
     item.addEventListener('click', function (e) {
+      r = confirm('Do you want to delete the person');
       e.preventDefault();
-      var id = e.target.id;
-      (0, _update.start_delete)(id);
+
+      if (r) {
+        var id = e.target.id;
+        (0, _update.start_delete)(id);
+      }
     });
   });
 }
@@ -9220,7 +9217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58285" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58575" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

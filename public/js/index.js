@@ -88,9 +88,12 @@ if (saveprofessionaldetails) {
 if (deleteuser) {
   deleteuser.forEach((item) => {
     item.addEventListener('click', (e) => {
+      r = confirm('Do you want to delete the person');
       e.preventDefault();
-      let id = e.target.id;
-      start_delete(id);
+      if (r) {
+        let id = e.target.id;
+        start_delete(id);
+      }
     });
   });
 }
