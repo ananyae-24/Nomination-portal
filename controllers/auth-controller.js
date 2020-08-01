@@ -40,7 +40,7 @@ exports.login = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    //secure: true,
+    secure: true,
     httpOnly: true,
   });
 
@@ -150,7 +150,8 @@ exports.signup = catchAsync(async (req, res, next) => {
   } catch (err) {
     user.passwordToken = undefined;
     user.tokenExpire = undefined;
-    await user.save({ validateBeforeSave: false });
+    console.log(err);
+    await Candidates.deleteOne({ _id: user._id });
     return next(new apierror('failed to send mail', 500));
   }
 });

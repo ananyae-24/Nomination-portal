@@ -2,10 +2,7 @@ header
     nav(class="sign")
       if user
         img(src="/image/12.png" class="logo")
-        a(href="contact.html" class="head") Contact Us...
         a(href="#" class="head" id="logout" ) Logout
-        a(href="candidate.html" class="head") Candidates
-        a(href="schedule.html" class="head") Schedule
         a(href="/EC/mainpage" class="head") Home
         -if(user.role!="admin")
          a(href=`/EC/person/${user._id}` class="head") ME
@@ -16,10 +13,7 @@ header
          a(href=`/EC/posts` class="head") Posts
       else
         img(src="/image/12.png" class="logo")
-        a(href="contact.html" class="head") Contact Us...
         a(href="/EC/login" class="head" ) LogIn/SignUp
-        a(href="candidate.html" class="head") Candidates
-        a(href="schedule.html" class="head") Schedule
         a(href="/EC/mainpage" class="head") Home
       
 

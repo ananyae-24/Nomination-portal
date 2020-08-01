@@ -5,7 +5,7 @@ exports.start_login = async function (email, password) {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/candidate/login',
+      url: 'https://127.0.0.1:3000/api/v1/candidate/login',
       data: {
         email,
         password,
@@ -51,7 +51,7 @@ exports.start_signup = async (
     if (role == 'candidate') {
       response = await axios({
         method: 'POST',
-        url: 'http://127.0.0.1:3000/api/v1/candidate/signup',
+        url: 'https://127.0.0.1:3000/api/v1/candidate/signup',
         data: {
           email,
           name,
@@ -109,7 +109,7 @@ exports.start_reset = async (password, confirmpassword, token) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `http://127.0.0.1:3000/api/v1/candidate/resetpassword/${token}`,
+      url: `https://127.0.0.1:3000/api/v1/candidate/resetpassword/${token}`,
       data: {
         password,
         confirmPassword: confirmpassword,

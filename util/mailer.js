@@ -3,21 +3,26 @@ const pug = require('pug');
 const htmttotext = require('html-to-text');
 
 module.exports = class Email {
-  constructor(user, url,password) {
-    this.from = 'ananyae@io';
+  constructor(user, url, password) {
+    this.from = 'electioncommission.iitk@gmail.com';
     this.to = user.email;
     this.url = url;
     this.name = user.name;
-
+    //
   }
   createTransporter() {
     return nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env._PORT,
+      service: 'SendGrid',
       auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
+        user: process.env.SENDGRID_USER,
+        pass: process.env.SENDGRID_PASSWORD,
       },
+      // host: process.env.EMAIL_HOST,
+      // port: process.env._PORT,
+      // auth: {
+      //   user: process.env.EMAIL_USERNAME,
+      //   pass: process.env.EMAIL_PASSWORD,
+      // },
     });
   }
   async send(template, subject) {
