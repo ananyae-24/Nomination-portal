@@ -14,6 +14,14 @@ const schema = new mongoose.Schema(
       unique: true,
       required: ['true', 'Please enter the email'],
       validate: [validator.isEmail, 'This is not a valid email'],
+      validate: {
+        validator: function (el) {
+          let i = el.indexOf('@');
+          let domain = el.substring(i + 1);
+          return domain === 'iitk.ac.in';
+        },
+        message: 'Not an iitk email id',
+      },
     },
     phoneNo: {
       type: Number,
@@ -21,6 +29,7 @@ const schema = new mongoose.Schema(
         validator: function (el) {
           return el >= 1000000000 && el <= 9999999999;
         },
+        message: 'Enter a 10 digit number',
       },
     },
     address: {
@@ -107,7 +116,7 @@ schema.methods.changepassword = async function (time) {
 schema.methods.setToken = async function () {
   const token = crypto.randomBytes(32).toString('hex');
   this.passwordToken = crypto.createHash('sha256').update(token).digest('hex');
-  this.tokenExpire = Date.now() + 50 * 60 * 1000;
+  this.tokenExpire = Date.now() + 30 * 60 * 1000;
   return token;
 };
 const modle = mongoose.model('candidates', schema);

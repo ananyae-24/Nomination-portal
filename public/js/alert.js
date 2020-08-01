@@ -33,7 +33,7 @@ export const alert = (msg, type) => {
     document
       .querySelector('body')
       .removeChild(document.querySelector('body').firstChild);
-  }, 1500);
+  }, 3000);
 };
 export const hidessignup_alert = () => {
   document
