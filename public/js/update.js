@@ -5,7 +5,7 @@ exports.update_person = async (data, id) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `http://127.0.0.1:3000/api/v1/candidate/contestents/${id}`,
+      url: `/api/v1/candidate/contestents/${id}`,
       data,
     });
     if (res.data.status == 'success') {
@@ -29,10 +29,10 @@ exports.register_person = async (
 ) => {
   try {
     let password = `${Rollno}${name}`;
-    console.log(name, email, role, address, phoneNo, Rollno, id);
+    // console.log(name, email, role, address, phoneNo, Rollno, id);
     const res = await axios({
       method: 'POST',
-      url: `http://127.0.0.1:3000/api/v1/candidate/contestents`,
+      url: `/api/v1/candidate/contestents`,
       data: {
         name,
         email,
@@ -60,7 +60,7 @@ exports.start_delete = async (id) => {
   try {
     const res = await axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:3000/api/v1/candidate/contestents/${id}`,
+      url: `/api/v1/candidate/contestents/${id}`,
     });
     if (res.data.status == 204) {
       alert('The info is updated ', 'success');

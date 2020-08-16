@@ -8379,7 +8379,7 @@ var alert = function alert(msg, type) {
   document.querySelector('body').insertBefore(block, document.querySelector('body').firstChild);
   window.setTimeout(function () {
     document.querySelector('body').removeChild(document.querySelector('body').firstChild);
-  }, 1500);
+  }, 3000);
 };
 
 exports.alert = alert;
@@ -8413,7 +8413,7 @@ exports.start_login = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/candidate/login',
+              url: '/api/v1/candidate/login',
               data: {
                 email: email,
                 password: password
@@ -8461,7 +8461,7 @@ exports.start_logout = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorR
           _context2.next = 3;
           return (0, _axios.default)({
             method: 'GET',
-            url: 'http://127.0.0.1:3000/api/v1/candidate/logout'
+            url: '/api/v1/candidate/logout'
           });
 
         case 3:
@@ -8507,7 +8507,7 @@ exports.start_signup = /*#__PURE__*/function () {
             _context3.next = 5;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/candidate/signup',
+              url: '/api/v1/candidate/signup',
               data: {
                 email: email,
                 name: name,
@@ -8527,7 +8527,7 @@ exports.start_signup = /*#__PURE__*/function () {
             _context3.next = 10;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/candidate/signup',
+              url: '/api/v1/candidate/signup',
               data: {
                 email: email,
                 name: name,
@@ -8582,7 +8582,7 @@ exports.start_forgetpassword = /*#__PURE__*/function () {
             _context4.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://127.0.0.1:3000/api/v1/candidate/forgetpassword',
+              url: '/api/v1/candidate/forgetpassword',
               data: {
                 email: email
               }
@@ -8630,7 +8630,7 @@ exports.start_reset = /*#__PURE__*/function () {
             _context5.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: "http://127.0.0.1:3000/api/v1/candidate/resetpassword/".concat(token),
+              url: "/api/v1/candidate/resetpassword/".concat(token),
               data: {
                 password: password,
                 confirmPassword: confirmpassword
@@ -8691,7 +8691,7 @@ exports.update_person = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: "http://127.0.0.1:3000/api/v1/candidate/contestents/".concat(id),
+              url: "/api/v1/candidate/contestents/".concat(id),
               data: data
             });
 
@@ -8734,12 +8734,12 @@ exports.register_person = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.prev = 0;
-            password = "".concat(Rollno).concat(name);
-            console.log(name, email, role, address, phoneNo, Rollno, id);
-            _context2.next = 5;
+            password = "".concat(Rollno).concat(name); // console.log(name, email, role, address, phoneNo, Rollno, id);
+
+            _context2.next = 4;
             return (0, _axios.default)({
               method: 'POST',
-              url: "http://127.0.0.1:3000/api/v1/candidate/contestents",
+              url: "/api/v1/candidate/contestents",
               data: {
                 name: name,
                 email: email,
@@ -8754,7 +8754,7 @@ exports.register_person = /*#__PURE__*/function () {
               }
             });
 
-          case 5:
+          case 4:
             res = _context2.sent;
 
             if (res.data.status == 'success') {
@@ -8764,20 +8764,20 @@ exports.register_person = /*#__PURE__*/function () {
               }, 1500);
             }
 
-            _context2.next = 12;
+            _context2.next = 11;
             break;
 
-          case 9:
-            _context2.prev = 9;
+          case 8:
+            _context2.prev = 8;
             _context2.t0 = _context2["catch"](0);
             (0, _alert.alert)(_context2.t0.response.data.message, 'error');
 
-          case 12:
+          case 11:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[0, 9]]);
+    }, _callee2, null, [[0, 8]]);
   }));
 
   return function (_x3, _x4, _x5, _x6, _x7, _x8, _x9) {
@@ -8796,7 +8796,7 @@ exports.start_delete = /*#__PURE__*/function () {
             _context3.next = 3;
             return (0, _axios.default)({
               method: 'DELETE',
-              url: "http://127.0.0.1:3000/api/v1/candidate/contestents/".concat(id)
+              url: "/api/v1/candidate/contestents/".concat(id)
             });
 
           case 3:
@@ -9217,7 +9217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59275" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63527" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

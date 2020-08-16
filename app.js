@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const authcontroller = require('./controllers/auth-controller');
 const error = require('./controllers/error');
 const path = require('path');
@@ -13,6 +14,7 @@ const candidate_router = require('./router/candidate-router.js');
 const view_router = require('./router/view-router');
 const cors = require('cors');
 const app = express();
+app.use(compression());
 ///////////////////////////////////////////
 const limiter = ratelimiter({
   max: 100,

@@ -5,7 +5,7 @@ exports.start_login = async function (email, password) {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'https://127.0.0.1:3000/api/v1/candidate/login',
+      url: '/api/v1/candidate/login',
       data: {
         email,
         password,
@@ -25,7 +25,7 @@ exports.start_logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://127.0.0.1:3000/api/v1/candidate/logout',
+      url: '/api/v1/candidate/logout',
     });
 
     if (res.data.status == 'success') {
@@ -51,7 +51,7 @@ exports.start_signup = async (
     if (role == 'candidate') {
       response = await axios({
         method: 'POST',
-        url: 'https://127.0.0.1:3000/api/v1/candidate/signup',
+        url: '/api/v1/candidate/signup',
         data: {
           email,
           name,
@@ -64,7 +64,7 @@ exports.start_signup = async (
     } else {
       response = await axios({
         method: 'POST',
-        url: 'http://127.0.0.1:3000/api/v1/candidate/signup',
+        url: '/api/v1/candidate/signup',
         data: {
           email,
           name,
@@ -90,7 +90,7 @@ exports.start_forgetpassword = async (email) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/candidate/forgetpassword',
+      url: '/api/v1/candidate/forgetpassword',
       data: {
         email: email,
       },
@@ -109,7 +109,7 @@ exports.start_reset = async (password, confirmpassword, token) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `https://127.0.0.1:3000/api/v1/candidate/resetpassword/${token}`,
+      url: `/api/v1/candidate/resetpassword/${token}`,
       data: {
         password,
         confirmPassword: confirmpassword,

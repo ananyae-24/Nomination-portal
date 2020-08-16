@@ -52,7 +52,7 @@ exports.getteam = catchAsync(async (req, res, next) => {
   });
   res.locals.temp = pop;
   res.locals.team = { proposers, seconders, campaigners };
-  console.log(proposers, seconders, campaigners);
+  // console.log(proposers, seconders, campaigners);
   next();
 });
 exports.team = (req, res, next) => {
