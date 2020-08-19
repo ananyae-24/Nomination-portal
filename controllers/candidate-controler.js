@@ -112,7 +112,7 @@ exports.statsIndividual = catchAsync(async (req, res, next) => {
     { $match: { worksFor: mongoose.Types.ObjectId(user_id) } },
     { $group: { _id: '$role', totalno: { $sum: 1 } } },
   ]);
-  console.log(stats);
+  // console.log(stats);
   res.status(200).json({ status: 'success', data: stats });
 });
 exports.statsOverall = catchAsync(async (req, res, next) => {
@@ -131,6 +131,6 @@ exports.statsOverall = catchAsync(async (req, res, next) => {
       },
     },
   ]);
-  console.log(stats);
+  // console.log(stats);
   res.status(200).json({ status: 'success', data: stats });
 });

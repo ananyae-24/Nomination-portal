@@ -78,7 +78,7 @@ exports.restrictTo = (options) => {
 };
 exports.forgetPassword = catchAsync(async (req, res, next) => {
   let email_ = req.body.email;
-  console.log(email_);
+
   let user = await Candidates.findOne({ email: email_ });
   if (!user) return next(new apierror('No such user exist', 400));
   token = await user.setToken();
@@ -92,7 +92,6 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
     await new email(user, URL).forgotmail();
     res.status(200).json({ status: 'success', message: 'reset token send' });
   } catch (err) {
-    console.log(err);
     user.passwordToken = undefined;
     user.tokenExpire = undefined;
     await user.save({ validateBeforeSave: false });
@@ -121,7 +120,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    //secure:true,
+    secure: true,
     httpOnly: true,
   });
   res.status(201).json({
@@ -150,7 +149,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   } catch (err) {
     user.passwordToken = undefined;
     user.tokenExpire = undefined;
-    console.log(err);
+    // console.log(err);
     await Candidates.deleteOne({ _id: user._id });
     return next(new apierror('failed to send mail', 500));
   }

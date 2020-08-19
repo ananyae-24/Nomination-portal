@@ -8,7 +8,6 @@ module.exports = class Email {
     this.to = user.email;
     this.url = url;
     this.name = user.name;
-    //
   }
   createTransporter() {
     return nodemailer.createTransport({
