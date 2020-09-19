@@ -41,7 +41,7 @@ exports.login = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    // secure: true,
+    secure: true,
     httpOnly: true,
   });
 
@@ -121,7 +121,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    //secure: true,
+    secure: true,
     httpOnly: true,
   });
   res.status(201).json({
@@ -176,7 +176,7 @@ exports.islogin = catchAsync(async (req, res, next) => {
         );
       } catch (err) {
         res.locals.user = null;
-        next();
+        return next();
       }
       // 2) Check if user still exists
       const currentUser = await Candidates.findById(decoded._id);
@@ -188,7 +188,7 @@ exports.islogin = catchAsync(async (req, res, next) => {
       //3) Check if user changed password after the token was issued
       if (currentUser.changepassword(decoded.iat)) {
         res.locals.user = null;
-        next();
+        return next();
       }
 
       // THERE IS A LOGGED IN USER

@@ -12,8 +12,8 @@ exports.start_login = async function (email, password) {
       },
     });
     if (res.data.status == 'success') {
+      alert('You are logged in', 'success');
       window.setTimeout(() => {
-        alert('You are logged in', 'success');
         location.assign('/EC/mainpage');
       }, 3000);
     }
