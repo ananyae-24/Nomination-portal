@@ -11,7 +11,10 @@ module.exports = class Email {
   }
   createTransporter() {
     return nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      requireTLS: true,
       auth: {
         user: process.env.SENDGRID_USER,
         pass: process.env.SENDGRID_PASSWORD,

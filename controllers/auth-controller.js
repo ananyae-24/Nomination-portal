@@ -147,6 +147,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     await new email(user, URL).welcomemail();
     res.status(200).json({ status: 'success', message: 'reset token send' });
   } catch (err) {
+    // console.log(err);
     user.passwordToken = undefined;
     user.tokenExpire = undefined;
     // console.log(err);
