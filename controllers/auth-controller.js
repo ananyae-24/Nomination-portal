@@ -26,9 +26,10 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!email || !password)
     return next(new apierror('invalid inputs given', 400));
 
-  user = await Candidates.findOne({ email: req.body.email }).select(
-    '+password'
-  );
+  user = await Candidates.findOne({
+    email: req.body.email,
+    active: true,
+  }).select('+password');
   if (!user)
     return next(new apierror('the password or email is incorrect', 400));
 
@@ -40,7 +41,7 @@ exports.login = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    secure: true,
+    // secure: true,
     httpOnly: true,
   });
 
@@ -120,7 +121,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    secure: true,
+    //secure: true,
     httpOnly: true,
   });
   res.status(201).json({

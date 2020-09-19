@@ -15,7 +15,7 @@ exports.start_login = async function (email, password) {
       window.setTimeout(() => {
         alert('You are logged in', 'success');
         location.assign('/EC/mainpage');
-      }, 1500);
+      }, 3000);
     }
   } catch (err) {
     alert(err.response.data.message, 'error');
