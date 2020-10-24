@@ -39,9 +39,10 @@ exports.login = catchAsync(async (req, res, next) => {
   let token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_TIME,
   });
+  console.log(user);
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    secure: true,
+    //secure: true,
     httpOnly: true,
   });
 
@@ -121,7 +122,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    secure: true,
+    //secure: true,
     httpOnly: true,
   });
   res.status(201).json({

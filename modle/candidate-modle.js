@@ -14,15 +14,15 @@ const schema = new mongoose.Schema(
       unique: true,
       required: ['true', 'Please enter the email'],
       validate: [validator.isEmail, 'This is not a valid email'],
-      validate: {
-        validator: function (el) {
-          let i = el.indexOf('@');
-          let domain = el.substring(i + 1);
-          return domain === 'iitk.ac.in';
-        },
-        message: 'Not an iitk email id',
-      },
-    },
+    //   validate: {
+    //     validator: function (el) {
+    //       let i = el.indexOf('@');
+    //       let domain = el.substring(i + 1);
+    //       return domain === 'iitk.ac.in';
+    //     },
+    //     message: 'Not an iitk email id',
+    //   },
+    // },
     phoneNo: {
       type: Number,
       validate: {
