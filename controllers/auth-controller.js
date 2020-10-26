@@ -42,7 +42,7 @@ exports.login = catchAsync(async (req, res, next) => {
   console.log(user);
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    //secure: true,
+    secure: true,
     httpOnly: true,
   });
 
@@ -62,6 +62,7 @@ exports.isProtected = catchAsync(async (req, res, next) => {
   if (!token) return next(new apierror('not logged in', 401));
   const data = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
   let user = await Candidates.findById(data._id);
+  console.log(user);
   if (!user)
     return next(new apierror('user was deleated please login again', 401));
   if (await user.changepassword(data.iat))
@@ -122,7 +123,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    //secure: true,
+    secure: true,
     httpOnly: true,
   });
   res.status(201).json({
@@ -149,7 +150,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     await new email(user, URL).welcomemail();
     res.status(200).json({ status: 'success', message: 'reset token send' });
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     user.passwordToken = undefined;
     user.tokenExpire = undefined;
     // console.log(err);
