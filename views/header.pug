@@ -5,7 +5,8 @@ header
         a(href="#" class="head" id="logout" ) Logout
         a(href="/EC/mainpage" class="head") Home
         -if(user.role!="admin")
-         a(href=`/EC/person/${user._id}` class="head") ME
+         a(href=`/EC/person/${user._id}` class="head") 
+          - `${user.name}`
         -if(user.role=="candidate")
          a(href=`/EC/Myteam/${user._id}` class="head") My Team
          a(href=`/EC/nomination/${user._id}` class="head") Nomination

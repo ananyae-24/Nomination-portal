@@ -5,20 +5,20 @@ block content
   form.php-email-form(role='form')
    .form-row
    .form-group.col-md-6
-    input.form-control(type='text' name='name' placeholder='Your Name' data-rule='minlen:4' data-msg='Please enter at least 4 chars' disabled=true value=`${person.name}`)
+    input.form-control(type='text' name='name' placeholder='Your Name' data-rule='minlen:4' data-msg='Please enter at least 4 chars' disabled=true value=`${user.name}`)
    .validate
     .form-group.col-md-6
-     input.form-control(type='email' name='email' placeholder='Your Email' data-rule='email' data-msg='Please enter a valid email' disabled=true value=`${person.email}`)
+     input.form-control(type='email' name='email' placeholder='Your Email' data-rule='email' data-msg='Please enter a valid email' disabled=true value=`${user.email}`)
    .validate
     .form-group.col-md-6
-     input.form-control(type='email' name='role' placeholder='Your Role'  data-msg='Please enter a valid email' disabled=true value=`${person.role}`)
+     input.form-control(type='email' name='role' placeholder='Your Role'  data-msg='Please enter a valid email' disabled=true value=`${user.role}`)
    .validate
     .form-group
-     input#save-number.form-control(type='number' name='subject' placeholder='Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${person.phoneNo}`)
+     input#save-number.form-control(type='number' name='subject' placeholder='Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${user.phoneNo}`)
    .validate
     .form-group
      -if(person.address!=undefined)
-      input#save-address.form-control(type='text' name='subject' placeholder='Address' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${person.address}`)
+      input#save-address.form-control(type='text' name='subject' placeholder='Address' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${user.address}`)
      -else
       input#save-address.form-control(type='text' name='subject' placeholder='Address' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
    .validate

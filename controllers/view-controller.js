@@ -28,9 +28,7 @@ exports.person = catchAsync(async (req, res, next) => {
   for (const property in person) {
     if (person[property] == undefined) delete person[property];
   }
-  res.status(200).render('individualform', {
-    person,
-  });
+  res.status(200).render('individualform');
 });
 exports.getteam = catchAsync(async (req, res, next) => {
   let id = req.params.id;
