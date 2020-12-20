@@ -24,7 +24,7 @@ block content
    .validate
     .form-group
      -if(person.Rollno!=undefined)
-      input#save-rollno.form-control(type='number' name='subject' placeholder='Roll Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${person.Rollno}`)
+      input#save-rollno.form-control(type='number' name='subject' placeholder='Roll Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${user.Rollno}`)
      -else
       input#save-rollno.form-control(type='number' name='subject' placeholder='Roll Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
    -if(person.role=="candidate")
