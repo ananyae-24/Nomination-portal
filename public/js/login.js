@@ -125,3 +125,17 @@ exports.start_reset = async (password, confirmpassword, token) => {
     alert(err.response.data.message, 'error');
   }
 };
+exports.somedata=async(t,el)=>{
+  try{ const res = await axios({
+    method: 'GET',
+    url: '/api/v1/candidate/getsome',
+  });
+
+  if (res.data.status == 'success')
+  { 
+    return res.data.allcandidates;
+}
+}catch (err) {
+    alert(err.response.data.message, 'error');
+  }
+}

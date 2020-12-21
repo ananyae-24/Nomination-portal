@@ -8,9 +8,14 @@ router
 router
   .route('/EC/login')
   .get(
-    viewcontroller.somedata,
     authcontroller.islogin,
     viewcontroller.getLoginPage
+  );
+  router
+  .route('/EC/signup')
+  .get(
+    authcontroller.islogin,
+    viewcontroller.getsignupPage
   );
 router.get('/EC/Verify', viewcontroller.getVerification);
 router.get('/EC/resetpassword/:token', viewcontroller.resetPassword);

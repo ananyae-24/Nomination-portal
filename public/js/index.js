@@ -4,7 +4,7 @@ import {
   start_logout,
   start_signup,
   start_forgetpassword,
-  start_reset,
+  start_reset,somedata
 } from './login';
 import { update_person, register_person, start_delete } from './update';
 const login = document.querySelector('#login');
@@ -31,7 +31,29 @@ if (logout) {
   });
 }
 if (signup) {
-  signup.addEventListener('submit', (e) => {
+  let ans;
+  document.addEventListener('DOMContentLoaded',async()=>{ans=await somedata();})
+  let t=document.querySelector('#signup_role');
+ t.addEventListener("change",async(e)=>{e.preventDefault();
+    let val=e.target.value;
+  let el=document.createElement('div');
+if(val=="candidate"){
+  el.innerHTML=`<p>For the post</p><select id="signup_post"><option value="President,_Student's_gymkhana"> President, Student' gymkhana</option>
+  <option value="Gerenal_secretary(SNT)"> Gerenal secretary(SNT)</option></select>`;
+  t.nextElementSibling.parentElement.removeChild(t.nextElementSibling);t.after(el);
+}
+else if(val=="campaigner"){
+    let temp ="";
+    for(let i=0;i<ans.length;i++)
+    {
+    temp=temp+`<option value=${ans[i]._id}> ${ans[i].name}</option>`;
+    
+  }temp=`<p> Enter who you want to campaign for</p><select id="signup_worksfor">`+temp+"</select>";
+  el.innerHTML=temp;
+  t.nextElementSibling.parentElement.removeChild(t.nextElementSibling);
+  t.after(el);
+}});
+  document.querySelector("#submit_details").addEventListener('click', (e) => {
     e.preventDefault();
     let email = document.querySelector('#signup_email').value;
     let password = document.querySelector('#signup_password').value;
@@ -39,8 +61,12 @@ if (signup) {
       .value;
     let name = document.querySelector('#signup_name').value;
     let role = document.querySelector('#signup_role').value;
-    let worksfor = document.querySelector('#signup_worksfor').value;
-    let post = document.querySelector('#signup_post').value;
+    let worksfor = document.querySelector('#signup_worksfor');
+    if(worksfor)
+    worksfor=worksfor.value;
+    let post = document.querySelector('#signup_post')
+    if(post)
+    post=post.value;
     start_signup(name, email, password, confirmpassword, role, worksfor, post);
   });
 }
@@ -61,8 +87,7 @@ if (resetpassword) {
   });
 }
 if (savePersonalDetails) {
-  savePersonalDetails.addEventListener('submit', (e) => {
-    e.preventDefault();
+  document.querySelector(".submit_info").addEventListener('click', (e) => { 
     let form = new FormData();
     form.append('address', document.querySelector('#save-address').value);
     form.append('phoneNo', document.querySelector('#save-number').value);
@@ -70,6 +95,7 @@ if (savePersonalDetails) {
     form.append('photo', document.querySelector('#save-photo').files[0]);
     let id = document.querySelector('.id__').id;
     update_person(form, id);
+    e.preventDefault();
   });
 }
 if (saveprofessionaldetails) {

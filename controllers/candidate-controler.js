@@ -134,3 +134,9 @@ exports.statsOverall = catchAsync(async (req, res, next) => {
   // console.log(stats);
   res.status(200).json({ status: 'success', data: stats });
 });
+exports.somedata = catchAsync(async (req, res, next) => {
+  let candidate = await Candidates.find({ role: 'candidate', active: true })
+    .select('_id name')
+    .sort('name');
+  res.status(200).json({status: "success",allcandidates:candidate}) ;
+});

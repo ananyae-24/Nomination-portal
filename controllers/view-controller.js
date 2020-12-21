@@ -14,6 +14,9 @@ exports.somedata = catchAsync(async (req, res, next) => {
 exports.getLoginPage = (req, res, next) => {
   res.status(200).render('login');
 };
+exports.getsignupPage = (req, res, next) => {
+  res.status(200).render('signup');
+};
 exports.getVerification = (req, res, next) => {
   res.status(200).render('verification', {
     token: req.query.token,
@@ -28,7 +31,7 @@ exports.person = catchAsync(async (req, res, next) => {
   for (const property in person) {
     if (person[property] == undefined) delete person[property];
   }
-  res.status(200).render('individualform');
+  res.status(200).render('individualform',{person});
 });
 exports.getteam = catchAsync(async (req, res, next) => {
   let id = req.params.id;

@@ -1,0 +1,59 @@
+extends base
+ 
+block content 
+   
+    form.form(id="signup")
+      div#standard_box
+        div.ss1
+            h1.card-title(style="align-content:center") Signup
+        p Enter your Name:
+        input(type="text" id="signup_name"  placeholder="Name")
+        <br><br>
+        p Enter your Email:
+        input(type="email" id="signup_email"  placeholder="IITK Email Id")
+        <br><br>
+        p Enter your Password:
+        input(type="password" id="signup_password" placeholder="Password")
+        <br><br>
+        p Enter your Confirm Password:
+        input(type="password" id="signup_confirmpassword"  placeholder="Password Confirm")
+        <br><br>
+        p Enter your Role:
+        select#signup_role
+         option(value="candidate") candidate
+         option(value="campaigner") campaigner
+        
+        //div
+            p Enter who you want to campaign for(only if you are a campaigner):
+            select#signup_worksfor
+                option(value=null) No One
+                -for(let i=0;i<allcandidates.length;i++)
+                    option(value=allcandidates[i]._id)= `${allcandidates[i].name}`
+        
+        div
+            p For the post( if candidate )
+            select#signup_post
+                option(value="President,_Student's_gymkhana") President, Student' gymkhana
+                option(value="Gerenal_secretary(SNT)") Gerenal secretary(SNT)
+                option(value="Gerenal_secretary(Media_and_Culture)") Gerenal secretary(Media and Culture)
+                option(value="Gerenal_secretary(GNS)") Gerenal secretary(GNS)
+                option(value="Gerenal_secretary,UG_Academics_and_Career") Gerenal secretary,UG Academics and Career
+                option(value="Gerenal_secretary,PG_Academics_and_Career") Gerenal secretary,PG Academics and Career
+                option(value=`BT-BS-MT-MS-MBA_Y${new Date().getFullYear()%100-4}`)= `BT/BS-MT/MS/MBA Y${new Date().getFullYear()%100-4}`
+                option(value=`BT-BS-MT-MS-MBA_Y${(new Date().getFullYear()%100)-3}`)=`BT/BS-MT/MS/MBA Y${(new Date().getFullYear()%100)-3}`
+                option(value=`BT-BS_Y${(new Date().getFullYear()%100)-3}`)= `BT/BS Y${(new Date().getFullYear()%100)-3}`
+                option(value=`BT-BS_Y${(new Date().getFullYear()%100)-2}`)= `BT/BS Y${(new Date().getFullYear()%100)-2}`
+                option(value=`BT-BS_Y${(new Date().getFullYear()%100)-1}`)=`BT/BS Y${(new Date().getFullYear()%100)-1}`
+                option(value=`BT-BS_Y${(new Date().getFullYear()%100)}`)=`BT/BS Y${(new Date().getFullYear()%100)}`
+                option(value=`MTech_Y${(new Date().getFullYear()%100)-1}`)=`MTech Y${(new Date().getFullYear()%100)-1}`
+                option(value=`MTech_Y${(new Date().getFullYear()%100)}`)=`MTech Y${(new Date().getFullYear()%100)}`
+                option(value=`MSc_Y${(new Date().getFullYear()%100)-1}`)=`MSc Y${(new Date().getFullYear()%100)-1}`
+                option(value=`MSc_Y${(new Date().getFullYear()%100)}`)=`MSc Y${(new Date().getFullYear()%100)}`
+                option(value=`MSR`)=`MSR`
+                option(value=`MBA_and_MDes_Y${(new Date().getFullYear()%100)-1}`)=`MBA and MDes Y${(new Date().getFullYear()%100)-1}`
+                option(value=`MBA_and_MDes_Y${(new Date().getFullYear()%100)}`)=`MBA and MDes Y${(new Date().getFullYear()%100)}`
+                option(value=`PHD_Y${(new Date().getFullYear()%100)-2}`)=`PHD Y${(new Date().getFullYear()%100)-2}`
+                option(value=`PHD_Y${(new Date().getFullYear()%100)-1}`)=`PHD Y${(new Date().getFullYear()%100)-1}`
+                option(value=`PHD_Y${(new Date().getFullYear()%100)}`)=`PHD Y${(new Date().getFullYear()%100)}`
+        br
+        input(type="submit" id="submit_details" class="btn btn-dark" value="Signup")

@@ -3,6 +3,7 @@ const auth_controller = require('./../controllers/auth-controller');
 const candidate_controller = require('./../controllers/candidate-controler.js');
 const view_controller = require('./../controllers/view-controller');
 const router = express.Router();
+router.route('/getsome').get(candidate_controller.somedata);
 //////////////////////////no authorization////////////////////////////////
 router
   .route('/activate/:token')
