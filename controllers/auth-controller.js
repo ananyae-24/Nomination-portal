@@ -62,7 +62,8 @@ exports.isProtected = catchAsync(async (req, res, next) => {
   if (!token) return next(new apierror('not logged in', 401));
   const data = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
   let user = await Candidates.findById(data._id);
-  console.log(user);
+  
+  console.log(user,"isProtected");
   if (!user)
     return next(new apierror('user was deleated please login again', 401));
   if (await user.changepassword(data.iat))
@@ -194,7 +195,7 @@ exports.islogin = catchAsync(async (req, res, next) => {
       }
 
       // THERE IS A LOGGED IN USER
-      console.log(currentUser);
+      console.log(currentUser,"islogin");
       res.locals.user = currentUser;
       return next();
     } catch (err) {
