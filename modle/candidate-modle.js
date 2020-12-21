@@ -107,9 +107,10 @@ schema.methods.correctPassword = async function (
   return bcrypt.compare(currentpassword, userpassword);
 };
 schema.methods.changepassword = async function (time) {
-  if (this.changedpasswordat) {
-    let temp = parseInt(this.changedpasswordat.getTime() / 1000, 10);
-    return time < temp;
+  console.log(time,this.passwordChangedAt);
+  if (this.passwordChangedAt) {
+    let temp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
+    return time > temp;
   }
   return false;
 };

@@ -39,7 +39,6 @@ exports.login = catchAsync(async (req, res, next) => {
   let token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_TIME,
   });
-  console.log(user);
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
     secure: false,
@@ -63,7 +62,7 @@ exports.isProtected = catchAsync(async (req, res, next) => {
   const data = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
   let user = await Candidates.findById(data._id);
   
-  console.log(user,"isProtected");
+  // console.log(user,"isProtected");
   if (!user)
     return next(new apierror('user was deleated please login again', 401));
   if (await user.changepassword(data.iat))
@@ -169,36 +168,47 @@ exports.logout = catchAsync((req, res, next) => {
 });
 
 exports.islogin = catchAsync(async (req, res, next) => {
+ 
   if (req.cookies.jwt) {
     try {
+      let decoded;
+      // console.log("Hi1");
       try {
         // 1) verify token
-        const decoded = await await promisify(jwt.verify)(
+         decoded = await await promisify(jwt.verify)(
           req.cookies.jwt,
           process.env.JWT_SECRET
         );
+        // console.log(decoded);
       } catch (err) {
+        console.log(err);
         res.locals.user = null;
         return next();
       }
       // 2) Check if user still exists
       const currentUser = await Candidates.findById(decoded._id);
+      // console.log(currentUser);
+      // console.log(decoded.iat);
       if (!currentUser) {
+        // console.log("Hi2");
         res.locals.user = null;
         return next();
       }
 
       //3) Check if user changed password after the token was issued
-      if (currentUser.changepassword(decoded.iat)) {
+      
+      if (await currentUser.changepassword(decoded.iat)) {
+        // console.log("Hi3");
         res.locals.user = null;
         return next();
       }
 
       // THERE IS A LOGGED IN USER
-      console.log(currentUser,"islogin");
+      // console.log(currentUser,"islogin");
       res.locals.user = currentUser;
       return next();
     } catch (err) {
+      // console.log("hi4");
       console.log(err.message);
       return next();
     }
