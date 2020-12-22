@@ -25,7 +25,7 @@ block content
           -if(user.role=="admin") 
            input.btn.btn-warning.deleteme(id=`${temp._id}` value="Delete")
  h1
-  u(style="color:white;") Proposers
+  u(style="color:black;") Proposers
  table
   -for(let i=0;i<team.proposers.length;i++)
    -if(i%4==0)
@@ -37,7 +37,7 @@ block content
      td
       +member(team.proposers[i].photo,team.proposers[i].name,team.proposers[i].email,team.proposers[i]._id)
  h1
-  u(style="color:white;") Seconders
+  u(style="color:black;") Seconders
  table
   -for(let i=0;i<team.seconders.length;i++)
    -if(i%4==0)
@@ -49,7 +49,7 @@ block content
      td
       +member(team.seconders[i].photo,team.seconders[i].name,team.seconders[i].email,team.seconders[i]._id)
  h1
-  u(style="color:white;") Campaigners
+  u(style="color:black;") Campaigners
  table
   -for(let i=0;i<team.campaigners.length;i++)
    -if((i+1)%4==0||i==0)

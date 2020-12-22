@@ -2,27 +2,23 @@ extends base
  
 block content
  .form#professional-detail
-  form.php-email-form(role='form')
-   .form-row
-   .form-group.col-md-6
-    input#create-name.form-control(type='text' name='name' placeholder='Person Name' data-rule='minlen:4' data-msg='Please enter at least 4 chars' )
-   .validate
-    .form-group.col-md-6
-     input#create-email.form-control(type='email' name='email' placeholder='Person Email' data-rule='email' data-msg='Please enter a valid email'  )
+  form#standard_box(role='form')
+   p Enter Name:
+   input#create-name.input_el(type='text' name='name' placeholder='Person Name' data-rule='minlen:4' data-msg='Please enter at least 4 chars' )
+   p Enter Email:
+   input#create-email.input_el(type='email' name='email' placeholder='Person Email' data-rule='email' data-msg='Please enter a valid email'  )
+   p Enter the Role:
    select(id="type")
     option(value="proposer") proposer
     option(value="seconder") seconder
    br
    br 
-   .validate
-    .form-group
-     input#create-number.form-control(type='number' name='subject' placeholder='Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
-   .validate
-    .form-group
-      input#create-address.form-control(type='text' name='subject' placeholder='Address' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
-   .validate
-    .form-group
-      input#create-rollno.form-control(type='number' name='subject' placeholder='Roll Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
-   .validate
-    button.btn.btn-primary.id__(type='submit' id=`${person._id}`) Add person
+   p Enter Number:
+   input#create-number.input_el(type='number' name='subject' placeholder='Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
+   p Enter Address:
+   input#create-address.input_el(type='text' name='subject' placeholder='Address' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
+   p Enter RollNo:
+   input#create-rollno.input_el(type='number' name='subject' placeholder='Roll Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
+   br
+   button.btn.btn-primary.id__(type='submit' id=`${person._id}` sytle=`margin-top:10px;`) Add person
    

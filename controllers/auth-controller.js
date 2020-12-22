@@ -41,7 +41,7 @@ exports.login = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    secure: false,
+    secure: true,
     httpOnly: true,
   });
 
@@ -123,7 +123,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    secure: false,
+    secure: true,
     httpOnly: true,
   });
   res.status(201).json({
@@ -161,7 +161,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
 exports.logout = catchAsync((req, res, next) => {
   res.cookie('jwt', 'loggedout', {
-    expires: new Date(Date.now + 5000),
+    expires: new Date(Date.now),
     httpOnly: true,
   });
   res.status(200).json({ status: 'success' });
@@ -181,7 +181,7 @@ exports.islogin = catchAsync(async (req, res, next) => {
         );
         // console.log(decoded);
       } catch (err) {
-        console.log(err);
+        //console.log(err);
         res.locals.user = null;
         return next();
       }
@@ -209,7 +209,7 @@ exports.islogin = catchAsync(async (req, res, next) => {
       return next();
     } catch (err) {
       // console.log("hi4");
-      console.log(err.message);
+      //console.log(err.message);
       return next();
     }
   } else return next();

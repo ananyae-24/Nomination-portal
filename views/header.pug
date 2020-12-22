@@ -1,7 +1,8 @@
 header
  div.navbar
       if user
-        img(src="/image/12.png" class="logo")
+        p.temp ELECTION COMISSION IITK
+        //img(src="/image/logo_G.png" class="logo")
         a(href="#" id="logout" ) Logout
         //a(href="/EC/mainpage" class="head") Home
         -if(user.role!="admin")
@@ -12,8 +13,9 @@ header
         -if(user.role=="admin")
          a(href=`/EC/posts` ) Posts
       else
-        img(src="/image/12.png" class="logo")
-        a(href="/EC/mainpage" ) Home
+        p.temp ELECTION COMISSION IITK
+        //img(src="/image/logo_G.png" class="logo")
+        //a(href="/EC/mainpage" ) Home
         a(href="/EC/login"  ) LogIn
         a(href="/EC/signup"  ) Signup
       
