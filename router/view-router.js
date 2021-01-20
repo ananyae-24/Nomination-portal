@@ -17,8 +17,8 @@ router
     authcontroller.islogin,
     viewcontroller.getsignupPage
   );
-router.get('/EC/Verify', viewcontroller.getVerification);
-router.get('/EC/resetpassword/:token', viewcontroller.resetPassword);
+router.get('/EC/Verify',authcontroller.islogin_, viewcontroller.getVerification);
+router.get('/EC/resetpassword/:token', authcontroller.islogin_,viewcontroller.resetPassword);
 router
   .route('/EC/person/:id')
   .get(

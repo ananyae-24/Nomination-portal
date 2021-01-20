@@ -87,6 +87,7 @@ const schema = new mongoose.Schema(
       default: false,
     },
     remark: String,
+    consent:{type:Boolean,default:false},
   },
   {
     toJSON: { virtuals: true },

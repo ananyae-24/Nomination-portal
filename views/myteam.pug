@@ -4,8 +4,8 @@ mixin member(photo,name,email,id)
   .search
     #page-input
       .card.text-center.mx-auto(style='width: 15rem;')
-        a(href=`/EC/person/${id}`)
-         img.card-img-top.card.mx-auto.mt-3.border-dark(src=`/user-image/${photo}` style='width: 5rem' alt='Card image cap')
+        //a(href=`/EC/person/${id}`)
+        img.card-img-top.card.mx-auto.mt-3.border-dark(src=`/user-image/${photo}` style='width: 5rem' alt='Card image cap')
         .card-body
           h6.card-title= name
           p.card-text= email 

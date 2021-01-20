@@ -41,7 +41,7 @@ exports.login = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    secure: true,
+    secure: false,
     httpOnly: true,
   });
 
@@ -123,7 +123,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   });
   res.cookie('jwt', token, {
     expires: new Date(Date.now + process.env.COOKIE_EXP * 60 * 24 * 60 * 1000),
-    secure: true,
+    secure: false,
     httpOnly: true,
   });
   res.status(201).json({
@@ -153,7 +153,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     
     user.passwordToken = undefined;
     user.tokenExpire = undefined;
-    // console.log(err);
+    console.log(err);
     await Candidates.deleteOne({ _id: user._id });
     return next(new apierror('failed to send mail', 500));
   }
@@ -212,5 +212,19 @@ exports.islogin = catchAsync(async (req, res, next) => {
       //console.log(err.message);
       return next();
     }
-  } else return next();
+  } else {
+    res.locals.user = null;
+    return next()};
+});
+exports.islogin_=catchAsync(async (req, res,next)=>{
+  res.locals.user=null;
+  next();
+});
+exports.giveconsent=catchAsync(async(req,res,next)=>{
+ let user=req.user;
+ if(!user.consent){
+   user.consent=true;
+   await user.save({validateBeforeSave: false});
+ }
+ res.status(200).json({status: 'success'});
 });

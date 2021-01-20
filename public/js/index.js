@@ -38,28 +38,34 @@ if (signup) {
     let val=e.target.value;
   let el=document.createElement('div');
 if(val=="candidate"){
-  el.innerHTML=`<p>For the post</p><select id="signup_post"><option value="President_Students_gymkhana"> President, Student' gymkhana</option>
-  <option value="Gerenal_secretary(SNT)"> Gerenal secretary(SNT)</option>
-  <option value="Gerenal_secretary(Media_and_Culture)"> Gerenal secretary(Media and Culture)</option>
-  <option value="Gerenal_secretary(GNS)"> Gerenal secretary(GNS)</option>
-  <option value="Gerenal_secretary_UG_Academics_and_Career"> Gerenal secretary,UG Academics and Career</option>
-  <option value="Gerenal_secretary_PG_Academics_and_Career"> Gerenal secretary,PG Academics and Career</option>
-  <option value= BT_BS_MT_MS_MBA_Y${new Date().getFullYear()%100-4}> BT/BS-MT/MS/MBA Y${new Date().getFullYear()%100-4}</option>
-  <option value=BT_BS_MT_MS_MBA_Y${(new Date().getFullYear()%100)-3}> BT/BS-MT/MS/MBA Y${(new Date().getFullYear()%100)-3}
-  <option value=BT_BS_Y${(new Date().getFullYear()%100)-3}> BT/BS Y${(new Date().getFullYear()%100)-3}</option>
-  <option value=BT_BS_Y${(new Date().getFullYear()%100)-2}>BT/BS Y${(new Date().getFullYear()%100)-2}</option>
-  <option value=BT_BS_Y${(new Date().getFullYear()%100)-1}>BT/BS Y${(new Date().getFullYear()%100)-1}</option>
-  <option value=BT_BS_Y${(new Date().getFullYear()%100)}>BT/BS Y${(new Date().getFullYear()%100)}</option>
-  <option value=MTech_Y${(new Date().getFullYear()%100)-1}>MTech Y${(new Date().getFullYear()%100)-1}</option>
-  <option value=MTech_Y${(new Date().getFullYear()%100)}>MTech Y${(new Date().getFullYear()%100)}</option>
-  <option value=MSc_Y${(new Date().getFullYear()%100)-1}>MSc Y${(new Date().getFullYear()%100)-1}</option>
-  <option value=MSc_Y${(new Date().getFullYear()%100)}>MSc Y${(new Date().getFullYear()%100)}</option>
+  let p=document.createElement("p");
+  p.innerText="For the post";
+  el.appendChild(p);
+  let select=document.createElement("select");
+  select.id="signup_post";
+  select.innerHTML=`<option value="President_Student's_gymkhana"> President, Student' gymkhana</option>
+  <option value="General_secretary,_Science_and_Technology"> General secretary(SNT)</option>
+  <option value="General_secretary,_Media_and_Culture"> General secretary(Media and Culture)</option>
+  <option value="General_secretary,_Games_and_sports)"> General secretary(GNS)</option>
+  <option value="General_secretary_UG_Academics_and_Career"> General secretary,UG Academics and Career</option>
+  <option value="General_secretary_PG_Academics_and_Career"> General secretary,PG Academics and Career</option>
+  <option value= BT_BS_MT_MS_MBA_Y16> BT/BS-MT/MS/MBA Y16</option>
+  <option value=BT_BS_MT_MS_MBA_Y17> BT/BS-MT/MS/MBA Y17</option>
+  <option value=BT_BS_Y17> BT/BS Y17</option>
+  <option value=BT_BS_Y18>BT/BS Y18</option>
+  <option value=BT_BS_Y19>BT/BS Y19</option>
+  <option value=BT_BS_Y20>BT/BS Y20</option>
+  <option value=MTech_Y19>MTech Y19</option>
+  <option value=MTech_Y20>MTech Y20</option>
+  <option value=MSc_Y19>MSc Y19</option>
+  <option value=MSc_Y20>MSc Y20</option>
   <option value=MSR> MSR</option>
-  <option value=MBA_and_MDes_Y${(new Date().getFullYear()%100)-1}>MBA and MDes Y${(new Date().getFullYear()%100)-1}</option>
-  <option value=MBA_and_MDes_Y${(new Date().getFullYear()%100)}>MBA and MDes Y${(new Date().getFullYear()%100)}</option>
-  <option value=PHD_Y${(new Date().getFullYear()%100)-2}>PHD Y${(new Date().getFullYear()%100)-2}</option>
-  <option value=PHD_Y${(new Date().getFullYear()%100)-1}>PHD Y${(new Date().getFullYear()%100)-1}</option>
-  <option value=PHD_Y${(new Date().getFullYear()%100)}>PHD Y${(new Date().getFullYear()%100)}</option></select>`;
+  <option value=MBA_and_MDes_Y19>MBA and MDes Y19</option>
+  <option value=MBA_and_MDes_Y20>MBA and MDes Y20</option>
+  <option value=PHD_Y18>PHD Y18 and earlier batches(including Msc-Phd Y16)</option>
+  <option value=PHD_Y19>PHD Y19 (including Msc-Phd Y17) </option>
+  <option value=PHD_Y20>PHD Y20 (including Msc-Phd Y18)</option>`;
+  el.appendChild(select);
   t.nextElementSibling.parentElement.removeChild(t.nextElementSibling);t.after(el);
 }
 else if(val=="campaigner"){
@@ -68,8 +74,15 @@ else if(val=="campaigner"){
     {
     temp=temp+`<option value=${ans[i]._id}> ${ans[i].name}</option>`;
     
-  }temp=`<p> Enter who you want to campaign for</p><select id="signup_worksfor">`+temp+"</select>";
+  }
+  temp=`<p> Enter who you want to campaign for</p><select id="signup_worksfor">`+temp+"</select>";
   el.innerHTML=temp;
+  let checkbox=document.createElement("input");
+  checkbox.type="checkbox";
+  checkbox.id="signup_check";
+  el.appendChild(document.createElement("br"));
+  el.appendChild(checkbox);
+  el.appendChild(document.createTextNode("I accept to campaign for the above individual"));
   t.nextElementSibling.parentElement.removeChild(t.nextElementSibling);
   t.after(el);
 }});
@@ -87,6 +100,12 @@ else if(val=="campaigner"){
     let post = document.querySelector('#signup_post')
     if(post)
     post=post.value;
+    let check=document.querySelector("#signup_check");
+    if(check)
+    {
+      check=check.checked;
+    }
+    if(role=="candidate" || check )
     start_signup(name, email, password, confirmpassword, role, worksfor, post);
   });
 }
