@@ -81,8 +81,12 @@ else if(val=="campaigner"){
   checkbox.type="checkbox";
   checkbox.id="signup_check";
   el.appendChild(document.createElement("br"));
+  el.appendChild(document.createElement("br"));
   el.appendChild(checkbox);
-  el.appendChild(document.createTextNode("I accept to campaign for the above individual"));
+  let l=` I , hereby ,give my consent to be a campaigner of the candidate mentioned above and undertake that I have completely read and understood the Code of Conduct of the General Election 2021 ,Students' Gymkhana and promise to abide by all clauses at all points of time during the election period.I understand that my actions and violations ot the code of Conduct shall reciprocate on the candidate I support.`;
+  el.appendChild(document.createTextNode(l));
+  el.appendChild(document.createElement("br"));
+  el.appendChild(document.createTextNode("I am voluntarily signing up as campaigner of the above mentioed candidate."))
   t.nextElementSibling.parentElement.removeChild(t.nextElementSibling);
   t.after(el);
 }});
