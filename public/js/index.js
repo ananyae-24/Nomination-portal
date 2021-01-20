@@ -44,9 +44,9 @@ if(val=="candidate"){
   let select=document.createElement("select");
   select.id="signup_post";
   select.innerHTML=`<option value="President_Student's_gymkhana"> President, Student' gymkhana</option>
-  <option value="General_secretary,_Science_and_Technology"> General secretary(SNT)</option>
-  <option value="General_secretary,_Media_and_Culture"> General secretary(Media and Culture)</option>
-  <option value="General_secretary,_Games_and_sports)"> General secretary(GNS)</option>
+  <option value="General_secretary,_Science_and_Technology"> Gerenal secretary, Science and Technology</option>
+  <option value="General_secretary,_Media_and_Culture"> General secretary Media and Culture</option>
+  <option value="General_secretary,_Games_and_sports"> General secretary games and sports</option>
   <option value="General_secretary_UG_Academics_and_Career"> General secretary,UG Academics and Career</option>
   <option value="General_secretary_PG_Academics_and_Career"> General secretary,PG Academics and Career</option>
   <option value= BT_BS_MT_MS_MBA_Y16> BT/BS-MT/MS/MBA Y16</option>
