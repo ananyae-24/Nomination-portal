@@ -12,7 +12,7 @@ mixin member(photo,name,email,id)
           input.btn.btn-warning.deleteme(id=`${id}` value="Delete")
   
 block content
- if candidates_
+ if candidates_[0]
   h1
    -if(candidates_[0])
     u(style="color:white;")= candidates_[0].post
@@ -22,7 +22,7 @@ block content
      </tr>
      <tr>
       <td>
-       +member(candidates_[0].photo,candidates_[0].name,candidates_[0].email,candidates_[0]._id)
+       +member(candidates_[i].photo,candidates_[i].name,candidates_[i].email,candidates_[i]._id)
     -else
       td
-       +member(candidates_[0].photo,team.candidates_[0].name,candidates_[0].email,candidates_[0]._id)
+       +member(candidates_[i].photo,candidates_[i].name,candidates_[i].email,candidates_[i]._id)

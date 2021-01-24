@@ -24,7 +24,7 @@ block content
         input#save-rollno.input_el(type='number' name='subject' placeholder='Roll Number' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' )
     -if(person.role=="candidate")
       p Post:
-        input.input_el(type='text' name='subject' placeholder='Post' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${(user.post).replace(/_/g," ")}` disabled=true)
+        input.input_el(type='text' name='subject' placeholder='Post' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject' value=`${(person.post).replace(/_/g," ")}` disabled=true)
     p Photo : 
       input#save-photo(type='file' name='photo' placeholder='Photo' accept="image/+")
     button.submit_info.btn.btn-primary.id__(type='button' id=`${person._id}`) Save

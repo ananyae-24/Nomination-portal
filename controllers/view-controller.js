@@ -84,3 +84,16 @@ exports.post = (req, res, next) => {
 exports.posts = (req, res, next) => {
   res.status(200).render('admin');
 };
+exports.protectsaccess=catchAsync(async(req,res,next)=>{
+  let user=req.user;
+  let currentuser=await Candidate.findById(req.params.id);
+  if(user.role!="admin"){
+    if(user.role=="candidate" && currentuser.role=="candidate" && currentuser.id != user.id)
+    return next(new apierror("invalid access",300));
+    if(user.role=="candidate" && currentuser.role!="candidate" && currentuser.worksFor != user._id)
+    return next(new apierror("invalid access",300));
+    if(user.role=="candidate" && currentuser.role=="campaigner")
+    return next(new apierror("invalid access",300));
+  }
+  return next();
+});

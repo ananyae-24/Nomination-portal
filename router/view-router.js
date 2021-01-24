@@ -24,6 +24,7 @@ router
   .get(
     authcontroller.islogin,
     authcontroller.isProtected,
+    viewcontroller.protectsaccess,
     viewcontroller.person
   );
 router.get(
@@ -31,6 +32,7 @@ router.get(
   authcontroller.islogin,
   authcontroller.isProtected,
   authcontroller.restrictTo(['admin', 'candidate']),
+  viewcontroller.protectsaccess,
   viewcontroller.getteam,
   viewcontroller.team
 );
@@ -39,6 +41,7 @@ router.get(
   authcontroller.islogin,
   authcontroller.isProtected,
   authcontroller.restrictTo(['admin', 'candidate']),
+  viewcontroller.protectsaccess,
   viewcontroller.nominationfilling
 );
 router.get(

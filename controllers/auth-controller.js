@@ -134,6 +134,10 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 });
 exports.signup = catchAsync(async (req, res, next) => {
   if (req.body.active) req.body.active = false;
+  if(req.body.role=="candidate")//req.body.post.match(/secretary/i) || req.body.post.match(/BS_Y[1,2][8,9,0]/i))
+  return next(new apierror("registration closed for candidate"),400);
+  if(req.body.role=="admin")
+  return next(new apierror("not allowed to access this route"),400);
   let user = await Candidates.findOne({ email: req.body.email });
   if (user) {
     if (user.active == true)

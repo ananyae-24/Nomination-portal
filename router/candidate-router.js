@@ -22,7 +22,7 @@ router
     candidate_controller.makeCandidate
   )
   .get(
-    auth_controller.restrictTo(['admin', 'candidate']),
+    auth_controller.restrictTo(['admin']),
     candidate_controller.getAll
   )
   .patch(candidate_controller.updatePassword)
@@ -34,9 +34,10 @@ router
   .route('/contestents/:id')
   .get(
     auth_controller.restrictTo(['admin', 'candidate']),
+    view_controller.protectsaccess,
     candidate_controller.specificCandidate
   )
-  .patch(candidate_controller.uploadfile, candidate_controller.updateUser)
+  .patch(view_controller.protectsaccess,candidate_controller.uploadfile, candidate_controller.updateUser)
   .delete(
     auth_controller.restrictTo(['admin']),
     candidate_controller.deleteOne

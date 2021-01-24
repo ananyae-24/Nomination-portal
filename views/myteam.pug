@@ -1,11 +1,14 @@
 extends base
-mixin member(photo,name,email,id)
+mixin member(photo,name,email,id,check)
  .container.searchContainer
   .search
     #page-input
       .card.text-center.mx-auto(style='width: 15rem;')
-        //a(href=`/EC/person/${id}`)
-        img.card-img-top.card.mx-auto.mt-3.border-dark(src=`/user-image/${photo}` style='width: 5rem' alt='Card image cap')
+        -if(check)
+         a(href=`/EC/person/${id}`)
+           img.card-img-top.card.mx-auto.mt-3.border-dark(src=`/user-image/${photo}` style='width: 5rem' alt='Card image cap')
+        -else
+         img.card-img-top.card.mx-auto.mt-3.border-dark(src=`/user-image/${photo}` style='width: 5rem' alt='Card image cap')
         .card-body
           h6.card-title= name
           p.card-text= email 
@@ -32,10 +35,10 @@ block content
     </tr>
     <tr>
      <td>
-      +member(team.proposers[i].photo,team.proposers[i].name,team.proposers[i].email,team.proposers[i]._id)
+      +member(team.proposers[i].photo,team.proposers[i].name,team.proposers[i].email,team.proposers[i]._id,true)
    -else
      td
-      +member(team.proposers[i].photo,team.proposers[i].name,team.proposers[i].email,team.proposers[i]._id)
+      +member(team.proposers[i].photo,team.proposers[i].name,team.proposers[i].email,team.proposers[i]._id,true)
  h1
   u(style="color:black;") Seconders
  table
@@ -44,10 +47,10 @@ block content
     </tr>
     <tr>
      <td>
-      +member(team.seconders[i].photo,team.seconders[i].name,team.seconders[i].email,team.seconders[i]._id)
+      +member(team.seconders[i].photo,team.seconders[i].name,team.seconders[i].email,team.seconders[i]._id,true)
    -else
      td
-      +member(team.seconders[i].photo,team.seconders[i].name,team.seconders[i].email,team.seconders[i]._id)
+      +member(team.seconders[i].photo,team.seconders[i].name,team.seconders[i].email,team.seconders[i]._id,true)
  h1
   u(style="color:black;") Campaigners
  table
@@ -56,7 +59,7 @@ block content
     </tr>
     <tr>
      <td>
-      +member(team.campaigners[i].photo,team.campaigners[i].name,team.campaigners[i].email,team.campaigners[i]._id)
+      +member(team.campaigners[i].photo,team.campaigners[i].name,team.campaigners[i].email,team.campaigners[i]._id,false)
    -else
      td
-      +member(team.campaigners[i].photo,team.campaigners[i].name,team.campaigners[i].email,team.campaigners[i]._id)
+      +member(team.campaigners[i].photo,team.campaigners[i].name,team.campaigners[i].email,team.campaigners[i]._id,false)

@@ -77,7 +77,7 @@ exports.start_signup = async (
     }
     if (response.data.status == 'success') {
       hidessignup_alert();
-      alert('Please verify your account on mail', 'success');
+      alert('Send your consent on the mail id given to you by the candidate', 'success');
       window.setTimeout(() => {
         window.location.assign('/EC/mainpage');
       }, 2000);
